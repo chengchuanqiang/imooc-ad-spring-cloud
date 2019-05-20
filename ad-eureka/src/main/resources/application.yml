@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: ad-eureka
+
+server:
+  port: 8000
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+# 高可用配置
+#---
+#spring:
+#  application:
+#    name: ad-eureka
+#  profiles: server1
+#
+#server:
+#  port: 8001
+#
+#eureka:
+#  instance:
+#    hostname: server1
+#    prefer-ip-address: false
+#  client:
+#    service-url:
+#      defaultZone: http://server2:8002/eureka/,http://server3:8003/eureka/
+#
+#---
+#spring:
+#  application:
+#    name: ad-eureka
+#  profiles: server2
+#
+#server:
+#  port: 8002
+#
+#eureka:
+#  instance:
+#    hostname: server2
+#    prefer-ip-address: false
+#  client:
+#    service-url:
+#      defaultZone: http://server1:8001/eureka/,http://server3:8003/eureka/
+#
+#---
+#spring:
+#  application:
+#    name: ad-eureka
+#  profiles: server3
+#
+#server:
+#  port: 8003
+#
+#eureka:
+#  instance:
+#    hostname: server3
+#    prefer-ip-address: false
+#  client:
+#    service-url:
+#      defaultZone: http://server1:8001/eureka/,http://server2:8002/eureka/

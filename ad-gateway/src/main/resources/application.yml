@@ -1,0 +1,18 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: ad-gateway
+eureka:
+  client:
+    service-url:
+       defaultZone: http://localhost:8000/eureka/
+
+zuul:
+  prefix: /imooc
+  routes:
+    sponsor:
+      path: /ad-sponsor/**
+      serviceId: eureka-client-ad-sponsor
+      strip-prefix: false
+      #127.0.0.1:9000/imooc/ad-sponsor/create/adPlan
