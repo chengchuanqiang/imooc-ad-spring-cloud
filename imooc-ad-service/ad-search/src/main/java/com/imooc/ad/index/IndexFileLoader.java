@@ -10,8 +10,10 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -78,6 +80,13 @@ public class IndexFileLoader {
 
     private List<String> loadDumpData(String fileName) {
         try {
+
+            // todo 获取文件，获取不到进行创建
+            File file = new File(fileName);
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
             BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileName));
             return bufferedReader.lines().collect(Collectors.toList());
         } catch (IOException e) {
