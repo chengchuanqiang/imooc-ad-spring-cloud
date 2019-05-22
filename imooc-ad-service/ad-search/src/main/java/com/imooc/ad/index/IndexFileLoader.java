@@ -13,7 +13,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +31,9 @@ public class IndexFileLoader {
      */
     @PostConstruct
     public void init() {
+
+        // 初始化文件夹
+        initDir(DConstant.DATA_ROOT_DIR);
 
         List<String> adPlanStrings = loadDumpData(String.format("%s%s", DConstant.DATA_ROOT_DIR, DConstant.AD_PLAN));
         adPlanStrings.forEach(p -> AdLevelDataHandler.handleLevel2(
@@ -77,13 +79,25 @@ public class IndexFileLoader {
 
     }
 
+    /**
+     * 初始化文件夹
+     *
+     * @param dataRootDir 文件路径
+     */
+    private void initDir(String dataRootDir) {
+        File dir = new File(dataRootDir);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+    }
+
 
     private List<String> loadDumpData(String fileName) {
         try {
 
             // todo 获取文件，获取不到进行创建
             File file = new File(fileName);
-            if(!file.exists()){
+            if (!file.exists()) {
                 file.createNewFile();
             }
 

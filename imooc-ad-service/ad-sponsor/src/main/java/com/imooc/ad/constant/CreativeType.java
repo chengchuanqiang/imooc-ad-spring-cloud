@@ -10,6 +10,9 @@ import lombok.Getter;
 @Getter
 public enum CreativeType {
 
+    /**
+     * 创意类型
+     */
     IMAGE(1, "图片"),
     VIDEO(2, "视频"),
     TEXT(3, "文本");

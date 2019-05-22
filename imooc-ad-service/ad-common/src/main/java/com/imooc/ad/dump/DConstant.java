@@ -7,7 +7,7 @@ package com.imooc.ad.dump;
  */
 public class DConstant {
 
-    public static final String DATA_ROOT_DIR = "G:\\work\\idea_work\\imooc-ad-spring-cloud\\imooc-ad-service\\mysql_data\\";
+    public static final String DATA_ROOT_DIR = "/home/work/ad-search/mysql-data/";
 
     /**
      * 各个表数据的储存文件名

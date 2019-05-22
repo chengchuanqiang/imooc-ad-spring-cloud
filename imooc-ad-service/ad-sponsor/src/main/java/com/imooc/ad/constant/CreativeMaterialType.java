@@ -8,8 +8,11 @@ import lombok.Getter;
  * @Date: 2019/5/4 9:54
  */
 @Getter
-public enum CreativeMetrialType {
+public enum CreativeMaterialType {
 
+    /**
+     * 物料类型
+     */
     JPG(1, "jpg"),
     BMP(2, "bmp"),
 
@@ -21,7 +24,7 @@ public enum CreativeMetrialType {
     private int type;
     private String desc;
 
-    CreativeMetrialType(int type, String desc) {
+    CreativeMaterialType(int type, String desc) {
         this.type = type;
         this.desc = desc;
     }
