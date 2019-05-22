@@ -83,8 +83,7 @@ public class UnitKeywordIndex implements IndexAware<String, Set<Long>> {
 
     public boolean match(Long unitId, List<String> keywords) {
 
-        if (unitKeywordMap.containsKey(unitId)
-                && CollectionUtils.isNotEmpty(unitKeywordMap.get(unitId))) {
+        if (unitKeywordMap.containsKey(unitId) && CollectionUtils.isNotEmpty(unitKeywordMap.get(unitId))) {
 
             Set<String> unitKeywords = unitKeywordMap.get(unitId);
 
