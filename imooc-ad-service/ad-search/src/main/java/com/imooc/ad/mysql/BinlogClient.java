@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.util.concurrent.Executor;
+
 /**
  * @Description:
  * @Author: ChengChuanQiang
@@ -19,15 +21,17 @@ public class BinlogClient {
     private BinaryLogClient client;
     private final BinlogConfig config;
     private final AggregationListener listener;
+    private final Executor binlogClientConnectExecutor;
 
     @Autowired
-    public BinlogClient(BinlogConfig config, AggregationListener listener) {
+    public BinlogClient(BinlogConfig config, AggregationListener listener, Executor binlogClientConnectExecutor) {
         this.config = config;
         this.listener = listener;
+        this.binlogClientConnectExecutor = binlogClientConnectExecutor;
     }
 
     public void connect() {
-        new Thread(() -> {
+        binlogClientConnectExecutor.execute(() -> {
             client = new BinaryLogClient(
                     config.getHost(),
                     config.getPort(),
@@ -47,7 +51,7 @@ public class BinlogClient {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }).start();
+        });
     }
 
     public void close() {
