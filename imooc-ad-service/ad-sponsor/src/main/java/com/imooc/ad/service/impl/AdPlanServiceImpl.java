@@ -38,7 +38,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public AdPlanResponse createAdPlan(AdPlanRequest request) throws AdException {
         if (!request.createValidate()) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
@@ -75,7 +75,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public AdPlanResponse updateAdPlan(AdPlanRequest request) throws AdException {
 
         if (!request.updateValidate()) {
@@ -106,7 +106,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteAdPlan(AdPlanRequest request) throws AdException {
 
         if (!request.deleteValidate()) {

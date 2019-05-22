@@ -9,6 +9,7 @@ import com.imooc.ad.vo.CreativeRequest;
 import com.imooc.ad.vo.CreativeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Description:
@@ -26,6 +27,7 @@ public class CreativeServiceImpl implements ICreativeService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public CreativeResponse createCreative(CreativeRequest request) throws AdException {
         // #todo 校验完善
 

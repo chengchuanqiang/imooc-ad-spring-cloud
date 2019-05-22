@@ -6,7 +6,6 @@ import com.imooc.ad.entity.AdUser;
 import com.imooc.ad.exception.AdException;
 import com.imooc.ad.service.IUserService;
 import com.imooc.ad.utils.CommonUtils;
-import com.imooc.ad.vo.CommonResponse;
 import com.imooc.ad.vo.CreateUserRequest;
 import com.imooc.ad.vo.CreateUserResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +28,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public CreateUserResponse createUser(CreateUserRequest request) throws AdException {
 
         if (!request.validate()) {

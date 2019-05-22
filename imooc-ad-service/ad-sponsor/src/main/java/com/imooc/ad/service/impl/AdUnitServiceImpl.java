@@ -20,6 +20,7 @@ import com.imooc.ad.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
@@ -59,6 +60,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public AdUnitResponse createUnit(AdUnitRequest request) throws AdException {
 
         if (!request.createValidate()) {
@@ -82,6 +84,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public AdUnitKeywordResponse createUnitKeyword(AdUnitKeywordRequest request) throws AdException {
 
         List<Long> unitIds = request.getUnitKeywords()
@@ -110,6 +113,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public AdUnitItResponse createUnitIt(AdUnitItRequest request) throws AdException {
 
         List<Long> unitIds = request.getUnitIts()
@@ -135,6 +139,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public AdUnitDistrictResponse createUnitDistrict(AdUnitDistrictRequest request) throws AdException {
         List<Long> unitIds = request.getUnitDistricts()
                 .stream()
@@ -159,6 +164,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public CreativeUnitResponse createCreativeUnit(CreativeUnitRequest request) throws AdException {
 
         List<Long> unitIds = request.getUnitItems()
