@@ -19,9 +19,10 @@ import com.imooc.ad.search.vo.feature.FeatureRelation;
 import com.imooc.ad.search.vo.feature.ItFeature;
 import com.imooc.ad.search.vo.feature.KeywordFeature;
 import com.imooc.ad.search.vo.media.AdSlot;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
@@ -31,8 +32,14 @@ import java.util.*;
  * @Date: 2019/5/22 23:56
  */
 @Slf4j
-@Component
+@Service
 public class SearchImpl implements ISearch {
+
+    public SearchResponse fallback(SearchRequest request, Throwable e) {
+        return null;
+    }
+
+    @HystrixCommand(fallbackMethod = "fallback")
     @Override
     public SearchResponse fetchAds(SearchRequest request) {
         // 请求的广告位信息
