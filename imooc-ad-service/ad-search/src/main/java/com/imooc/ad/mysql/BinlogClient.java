@@ -18,6 +18,8 @@ import java.util.concurrent.Executor;
 @Component
 public class BinlogClient {
 
+    private static final Long DEFAULT_POSITION = -1L;
+
     private BinaryLogClient client;
     private final BinlogConfig config;
     private final AggregationListener listener;
@@ -38,7 +40,7 @@ public class BinlogClient {
                     config.getUsername(),
                     config.getPassword()
             );
-            if (!StringUtils.isEmpty(config.getBinlogName()) && !config.getPosition().equals("-1")) {
+            if (!StringUtils.isEmpty(config.getBinlogName()) && !DEFAULT_POSITION.equals(config.getPosition())) {
                 client.setBinlogFilename(config.getBinlogName());
                 client.setBinlogPosition(config.getPosition());
             }
