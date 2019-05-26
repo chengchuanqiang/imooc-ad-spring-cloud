@@ -14,6 +14,7 @@
         <module>ad-eureka</module>
         <module>ad-gateway</module>
         <module>imooc-ad-service</module>
+        <module>kafka-study</module>
     </modules>
 
     <name>imooc-ad-spring-cloud</name>
