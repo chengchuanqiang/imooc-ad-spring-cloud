@@ -1,0 +1,62 @@
+{
+  "featureInfo": {
+    "districtFeature": {
+      "districts": [
+        {
+          "city": "合肥市",
+          "province": "安徽省"
+        }
+      ]
+    },
+    "itFeature": {
+      "its": [
+        "台球",
+        "游泳"
+      ]
+    },
+    "keywordFeature": {
+      "keywords": [
+        "宝马",
+        "大众"
+      ]
+    },
+    "relation": "OR"
+  },
+  "requestInfo": {
+    "adSlots": [
+      {
+        "adSlotCode": "ad-x",
+        "height": 720,
+        "minCpm": 1000,
+        "positionType": 1,
+        "type": [
+          1,
+          2
+        ],
+        "width": 1080
+      }
+    ],
+    "app": {
+      "activityName": "video",
+      "appCode": "imooc",
+      "appName": "imooc",
+      "packageName": "com.imooc"
+    },
+    "device": {
+      "deviceCode": "iphone",
+      "displaySize": "1080 720",
+      "ip": "127.0.0.1",
+      "mac": "0xxxxx",
+      "model": "x",
+      "screenSize": "1080 720",
+      "serialName": "123456789"
+    },
+    "geo": {
+      "city": "北京市",
+      "latitude": 100.28,
+      "longitude": 88.61,
+      "province": "北京市"
+    },
+    "requestId": "aaa"
+  }
+}
